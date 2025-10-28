@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>都道府県シルエットクイズ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🗾 都道府県シルエットクイズ</h1>
+            <p class="subtitle">シルエットを見て都道府県を当てよう！</p>
+        </header>
+
+        <!-- クイズコンテナ -->
+        <div id="quiz-container" class="quiz-container">
+            <div id="question-number" class="question-number">問題 1 / 5</div>
+            
+            <!-- シルエット画像表示エリア -->
+            <div class="image-container">
+                <!-- 
+                    画像ファイルは以下のように images/ フォルダに配置してください:
+                    - images/hokkaido_silhouette.png
+                    - images/kyoto_silhouette.png
+                    - images/tokyo_silhouette.png
+                    - images/okinawa_silhouette.png
+                    - images/nagano_silhouette.png
+                    - images/osaka_silhouette.png
+                    - images/fukuoka_silhouette.png
+                -->
+                <img 
+                    id="silhouette-image" 
+                    src="images/hokkaido_silhouette.png" 
+                    alt="都道府県のシルエット"
+                    onerror="this.style.backgroundColor='#e0e0e0'; this.alt='画像が見つかりません';"
+                >
+            </div>
+
+            <div class="question-text">この都道府県はどこでしょう？</div>
+
+            <!-- 4択選択肢 -->
+            <div id="choices-container" class="choices-container">
+                <!-- JavaScriptで動的に生成 -->
+            </div>
+
+            <!-- フィードバック表示 -->
+            <div id="feedback" class="feedback"></div>
+
+            <!-- 回答・次の問題ボタン -->
+            <div class="button-container">
+                <button id="submit-btn" class="btn btn-primary" onclick="submitAnswer()">
+                    回答する
+                </button>
+                <button id="next-btn" class="btn btn-secondary" onclick="nextQuestion()" style="display: none;">
+                    次の問題へ →
+                </button>
+            </div>
+        </div>
+
+        <!-- 最終結果表示コンテナ -->
+        <div id="result-container" class="result-container" style="display: none;">
+            <h2>🎯 クイズ終了！</h2>
+            <div class="result-box">
+                <div id="final-score" class="final-score"></div>
+                <div id="accuracy" class="accuracy"></div>
+                <div id="comment" class="comment"></div>
+            </div>
+            <button class="btn btn-primary" onclick="restartQuiz()">
+                もう一度挑戦する
+            </button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 都道府県シルエットクイズ</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+

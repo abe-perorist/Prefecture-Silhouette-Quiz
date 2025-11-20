@@ -7,68 +7,70 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+    <div class="main-wrapper">
         <header>
             <h1>🗾 都道府県シルエットクイズ</h1>
-            <p class="subtitle">シルエットを見て都道府県を当てよう！</p>
+            <p class="subtitle">日本地図を完成させよう！</p>
         </header>
 
-        <!-- クイズコンテナ -->
-        <div id="quiz-container" class="quiz-container">
-            <div id="question-number" class="question-number">問題 1 / 5</div>
-            
-            <!-- シルエット画像表示エリア -->
-            <div class="image-container">
-                <!-- 
-                    画像ファイルは以下のように images/ フォルダに配置してください:
-                    - images/hokkaido_silhouette.png
-                    - images/kyoto_silhouette.png
-                    - images/tokyo_silhouette.png
-                    - images/okinawa_silhouette.png
-                    - images/nagano_silhouette.png
-                    - images/osaka_silhouette.png
-                    - images/fukuoka_silhouette.png
-                -->
-                <img 
-                    id="silhouette-image" 
-                    src="images/hokkaido_silhouette.png" 
-                    alt="都道府県のシルエット"
-                    onerror="this.style.backgroundColor='#e0e0e0'; this.alt='画像が見つかりません';"
-                >
+        <div class="game-container">
+            <!-- 左側：クイズエリア -->
+            <div class="quiz-section">
+                <div id="quiz-container" class="quiz-container">
+                    <div class="quiz-header">
+                        <div id="question-number" class="question-number">問題 1 / 47</div>
+                        <div id="score-display" class="score-display">正解数: 0</div>
+                    </div>
+                    
+                    <!-- シルエット表示エリア -->
+                    <div class="silhouette-container">
+                        <svg id="silhouette-svg" viewBox="0 0 1000 1000">
+                            <!-- ここに選択された都道府県のパスが挿入されます -->
+                        </svg>
+                    </div>
+
+                    <div class="question-text">この都道府県はどこでしょう？</div>
+
+                    <!-- 4択選択肢 -->
+                    <div id="choices-container" class="choices-container">
+                        <!-- JavaScriptで動的に生成 -->
+                    </div>
+
+                    <!-- フィードバック表示 -->
+                    <div id="feedback" class="feedback"></div>
+
+                    <!-- 次の問題ボタン -->
+                    <div class="button-container">
+                        <button id="next-btn" class="btn btn-secondary" onclick="nextQuestion()" style="display: none;">
+                            次の問題へ →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 最終結果表示 -->
+                <div id="result-container" class="result-container" style="display: none;">
+                    <h2>🎉 ゲームクリア！</h2>
+                    <div class="result-box">
+                        <div class="final-score">全47都道府県制覇！</div>
+                        <div class="comment">おめでとうございます！</div>
+                    </div>
+                    <button class="btn btn-primary" onclick="resetProgress()">
+                        最初から遊ぶ
+                    </button>
+                </div>
             </div>
 
-            <div class="question-text">この都道府県はどこでしょう？</div>
-
-            <!-- 4択選択肢 -->
-            <div id="choices-container" class="choices-container">
-                <!-- JavaScriptで動的に生成 -->
+            <!-- 右側：地図エリア -->
+            <div class="map-section">
+                <div class="map-container" id="map-container">
+                    <!-- ここにjapan_map.svgが読み込まれます -->
+                </div>
+                <div class="map-legend">
+                    <div class="legend-item"><span class="color-box cleared"></span>正解済み</div>
+                    <div class="legend-item"><span class="color-box default"></span>未回答</div>
+                </div>
+                <div id="completion-rate" class="completion-rate">制覇率: 0%</div>
             </div>
-
-            <!-- フィードバック表示 -->
-            <div id="feedback" class="feedback"></div>
-
-            <!-- 回答・次の問題ボタン -->
-            <div class="button-container">
-                <button id="submit-btn" class="btn btn-primary" onclick="submitAnswer()">
-                    回答する
-                </button>
-                <button id="next-btn" class="btn btn-secondary" onclick="nextQuestion()" style="display: none;">
-                    次の問題へ →
-                </button>
-            </div>
-        </div>
-
-        <!-- 最終結果表示コンテナ -->
-        <div id="result-container" class="result-container" style="display: none;">
-            <h2>🎯 クイズ終了！</h2>
-            <div class="result-box">
-                <div id="final-score" class="final-score"></div>
-                <div id="accuracy" class="accuracy"></div>
-                <div id="comment" class="comment"></div>
-            </div>
-            <button class="btn btn-primary" onclick="restartQuiz()">
-                もう一度挑戦する
-            </button>
         </div>
     </div>
 

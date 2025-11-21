@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>都道府県シルエットクイズ</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="main-wrapper">
         <header>
             <h1>🗾 都道府県シルエットクイズ</h1>
-            <p class="subtitle">日本地図を完成させよう！</p>
         </header>
 
         <div class="game-container">
@@ -21,15 +22,13 @@
                         <div id="question-number" class="question-number">問題 1 / 47</div>
                         <div id="score-display" class="score-display">正解数: 0</div>
                     </div>
-                    
+
                     <!-- シルエット表示エリア -->
                     <div class="silhouette-container">
                         <svg id="silhouette-svg" viewBox="0 0 1000 1000">
                             <!-- ここに選択された都道府県のパスが挿入されます -->
                         </svg>
                     </div>
-
-                    <div class="question-text">この都道府県はどこでしょう？</div>
 
                     <!-- 4択選択肢 -->
                     <div id="choices-container" class="choices-container">
@@ -72,6 +71,10 @@
                 <div id="completion-rate" class="completion-rate">制覇率: 0%</div>
             </div>
         </div>
+
+        <div class="footer-controls">
+            <button id="reset-btn" class="btn btn-danger btn-sm" onclick="resetProgress()">進捗をリセット</button>
+        </div>
     </div>
 
     <footer>
@@ -80,5 +83,5 @@
 
     <script src="script.js"></script>
 </body>
-</html>
 
+</html>
